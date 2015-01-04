@@ -84,30 +84,6 @@ StoreMixin = {
         });
     },
     /**
-     * Default function gets the state from stores
-     * @returns {Object}
-     * @method getInitialState
-     */
-    getInitialState: function () {
-        if(!this.stateMixin){
-            console.error("ERROR: this.stateMixin() must be defined!");
-            return {};
-        }
-        return this.stateMixin();
-    },
-    /**
-     * The default change handler, overwrite it to change
-     * @returns {Object}
-     * @method _onChange
-     */
-    _onChange: function () { 
-        if(!this.stateMixin){
-            console.error("ERROR: this.stateMixin() must be defined!");
-            return;
-        }
-        this.setState(this.stateMixin()); 
-    },
-    /**
      * Gets a store-change handler from the component
      * @param {Function|String} handler The handler to get
      * @returns {Function}

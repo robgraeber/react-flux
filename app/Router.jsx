@@ -1,12 +1,15 @@
+//Entry point for the app
+require('./Globals');
+
 var React = require('react'),
     Router = require('react-router'),
-    Dispatcher = require('./Dispatcher'),
-    AboutView = require('./components/AboutView'),
-    HomeView = require('./components/HomeView'),
-    LayoutView = require('./components/LayoutView');
-
-var Route    = Router.Route,
+    Dispatcher = require2('Dispatcher'),
+    HomeView = require2('views/HomeView'),
+    AboutView = require2('views/AboutView'),
+    LayoutView = require2('views/LayoutView'),
+    Route = Router.Route,
     NotFound = Router.NotFoundRoute;
+
 
 var routes = (
     <Route path="/" handler={LayoutView}>
@@ -20,11 +23,8 @@ module.exports = routes;
 
 if (typeof window !== 'undefined') {
     window.onload = function() {
-        var context = Dispatcher.createContext();
-        context.rehydrate(window.data);
-        
         Router.run(routes, Router.HistoryLocation, function (Handler, state) {
-            React.render(<Handler params={state.params} context={context} />, document);
+            React.render(<Handler params={state.params}/>, document.body);
         });
     };
 }

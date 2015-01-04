@@ -25,13 +25,11 @@ if (cluster.isMaster) {
     console.log('Worker ' + cluster.worker.id + ' running!');
     
     var app = express();
+
     app.use(compress());
+    app.get('/', render);
     app.use(express.static(path.join(__dirname, './public')));
-
-    ['./routes/posts'].forEach(function(module){
-        require(module)(app);
-    });
-
+    
     app.get('*', render);
 
     app.set('port', process.env.PORT || 8000);

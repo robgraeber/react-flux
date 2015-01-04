@@ -1,11 +1,7 @@
 var Dispatchr = require('dispatchr')();
 
-['./stores/FoodEventStore'].forEach(function (modulePath) {
+['./stores/ApiStore'].forEach(function (modulePath) {
     Dispatchr.registerStore(require(modulePath));
 });
 
-module.exports = {
-    createContext: function(){
-        return new Dispatchr({});
-    }
-}
+module.exports = new Dispatchr({});

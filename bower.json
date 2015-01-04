@@ -10,7 +10,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "frontend/lib",
+    "app/lib",
     "test",
     "tests"
   ]
